@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>getter, setter</h1>
+</body>
+</html>
+<script>
+  var obj = {
+    msg: 18,
+    name: '小明'
+  }
+
+  // 想要监视obj对象属性值的变化
+  // 这里我们监视vm属性的变化
+  // 虽然监视的是vm的属性，但是变相的相当于监视了obj的属性了
+  var vm = {}
+  Object.defineProperty(vm, 'name', {
+    // 当使用vm.name时(是获取，不是赋值),
+    // get方法会被自动调用, 返回值是最终获取的值
+    // vm.name实际值的是获取不到的
+    get: function () {
+      console.log('有人想使用vm.name值')
+      return obj.name
+    },
+    // 给vm.name 赋值时set方法自动执行
+    // 参数val就是要赋的那个值
+    set: function (val) {
+      console.log('有人要给vm.name赋值了')
+      obj.name = val
+    }
+  })
+  // Object.defineProperties()
+</script>

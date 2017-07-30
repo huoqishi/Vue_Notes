@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+var vm = {}
+Object.defineProperty(vm, 'name', {
+  get: function () {
+    console.log('get方法执行了')
+    return '输出的是这里return的值'
+  },
+  set: function (val) {
+    console.log(val)
+    console.log('set方法执行了')
+  }
+})
+vm.name = 18
+console.log(vm.name)
+// 但是执行 `vm.name = 18`时set方法执行了,且参数val就是18
+// 执行console.log(vm.name)时 get方法执行了，输入的值是undefined, 这个undefined其实是get方法的返回值(没有return 则返回undefined)
+</script>

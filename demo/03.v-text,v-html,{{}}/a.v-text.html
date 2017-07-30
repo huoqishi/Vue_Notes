@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-text</title>
+</head>
+<body>
+  <h1 v-text="msg"></h1>
+  <hr>
+  <div id="app">
+    <!--4. 通过v-text属性去指定页面要呈现什么数据  -->
+    <!-- 注意v-text的值，必需js表达式的形式!  -->
+    <h1 v-text=" 1 + 1 "></h1>
+    <h1 v-text=" '我是小明我今年' + 18 + '岁了' "></h1>
+    <h1 v-text=" '我是中国人，我爱自己的祖国' "></h1>
+    <h1 v-text=" 1===1 ? '1等于1' : '1不等于1' "></h1>
+    <h1 v-text=" [1,2,3].join('--') "></h1>
+    <h1 v-text=" JSON.stringify({name:1, age: 2}) "></h1>
+    <h1 v-text=" Math.random() "></h1> <!--Math是js语法规划里的，所以可以直接使用  -->
+    <!-- <h1 v-text=" document.getElementById('xx').innerHTML "></h1> 不可以,不允许使用bom(包括dom)-->
+    <!-- <h1 v-text="document.getElementById('app').innerHTML"></h1> -->
+    <!-- <h1 v-text=" test() "></h1>不可以，不能够调用自己在js中定义的函数,  -->
+    <!-- <h1 v-text=" 我是中国人，我爱自己的祖国! "></h1> 不可以, 如果要写字符串，需要用引号包裹起来 -->
+    <!-- <h1 v-text=" var a = 3"></h1> 不可以, 值必需是js表达式! -->
+    
+    <h1 v-text=" msg "></h1>  <!--如果写了某个字符串，但是没有添加引入, vue会将其他当作是data中的属性  -->
+    <h1 v-text=" msg + '!!!!' "></h1>
+    <h1 v-text=" age "></h1>
+    <h1 v-text=" age + 2 "></h1>
+
+    <hr>
+    <h1 xx="'普通属性中写js表达式是无效的'"></h1>
+    <h1 yy=" 1 + 1 "></h1>
+    <img src=" './a/b/c' + '/dd.jpg' " alt="">
+  </div>
+</body>
+</html>
+<!--1. 引入vue.js文件  -->
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+  // 2. 创建vue实例对象
+  var vm = new Vue({
+    data: function () {
+      return {
+        msg: '我是中国人，我爱自己的祖国!',
+        age: 18
+      }
+    }
+  })
+  // 3. 调用实现的$mount方法，并指一个css选择器作为参数
+  // 该方法的作用是通知Vue实例(vm)去解析 dom中的指令(以 v- 开头的的标签属性)
+  vm.$mount('#app')
+
+  // 随便写的一个方法
+  // function test () {
+  //   return '好开心呀'
+  // }
+
+  // 尝试着在浏览器的console中执行:
+  // vm.msg = 给个其他值!
+  // 或者 vm.age = 给个其他值!
+  // 执行之后页面有没有跟着变化?
+</script>

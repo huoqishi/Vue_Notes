@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>注册事件 v-on</title>
+  <style>
+  button{
+    display: block
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    {{count}} <br>
+    <!--属性值依然写js表达式,点击按钮时，这个表达式就会执行  -->
+    <button v-on:click="count = count + 1">值+1</button>
+    <!--当点击按钮时就会执行helloA方法,   -->
+    <!--如果调用方法时，如果不需要传递参数给该方法，就可以省略括号  -->
+    <button v-on:click="helloA">点击事件</button>
+    <!--如果调用方法时，需要传递参数给该方法时，就不能省略括号  -->
+    <button v-on:click="helloB(99, '小明', {a:1,b:2}, count)">点击事件</button>
+    <button v-on:click="helloC">查看事件回调函数中的this</button>
+
+    <!--注册事件时，v-on指令可以简写，就是把 v-on: 简写为一个 @ 符号, 其他地址不变 -->
+    <button @click="helloB(99, '小明', {a:1,b:2}, count)">简写</button>
+  </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+  var vm = new Vue({
+    // 数据放在data中
+    data: function () {
+      return {
+        count: 1
+      }
+    },
+    // 方法放在methods中
+    methods: {
+      helloA: function () {
+        window.alert('hello word!')
+      },
+      helloB: function (argA, argB, argC, argD) {
+        console.log(argA, argB, argC, argD)
+      },
+      helloC: function () {
+        console.log(this)
+        // Vue会将每一个事件回调函数中的this更改为Vue的实例,也就是这里的vm
+        console.log(this === vm) // true
+        this.count = 99
+      }
+    }
+  })
+  vm.$mount('#app')
+</script>

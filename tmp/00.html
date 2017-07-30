@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  var vm = {}
+Object.defineProperty(vm, 'name', {}) // 给vm对象添加了一个属性name, 它的值为undefined  
+// 尝试着修改vm.name 的值
+vm.name = 18
+console.log(vm.name) // undefined 输出的还是undefined，也就是说上一句的赋值操作并没有生效  
+</script>

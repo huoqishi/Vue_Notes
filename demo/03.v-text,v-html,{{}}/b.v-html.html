@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-html</title>
+</head>
+<body>
+  <h1>v-html</h1>
+  <pre>
+    v-html与v-text的区别:
+    v-html与v-text用法一致，但是有一个区别
+    v-text 如果指定一个包含html标签的字符串，这个字符串会被原样显示
+    v-html 如果指定一个包含html标签的字符串，这个字符串中的标签会被渲染到dom中
+  </pre>
+  <div id="app">
+    <div v-html=" '<h3>我是小明</h3>' "></div>
+    <div v-text=" '<h3>我是小明</h3>' "></div>
+    <hr>
+    <div v-html="msg"></div>
+    <div v-text="msg"></div>
+  </div>
+</body>
+</html>
+<!--1. 引入vue.js文件  -->
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+  // 2. 创建vue实例对象
+  var vm = new Vue({
+    data: function () {
+      return {
+        msg: '<h1>我是中国人，我爱自己的祖国!<h1>',
+        age: 18
+      }
+    }
+  })
+
+  // 3. 不要忘记这一步
+  vm.$mount('#app')
+  </script>

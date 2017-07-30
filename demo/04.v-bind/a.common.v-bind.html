@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-bind</title>
+</head>
+
+<body>
+  <h1>v-bind指定的常规用法</h1>
+  <div id="app">
+    <!--未使用v-bind时  -->
+    <h1 tmp="dataA" id="dataB" test="dataC"></h1>
+    <img src="dataD">
+    <hr>
+    <!--使用v-bind时  -->
+    <h1 v-bind:tmp="dataA" v-bind:id="dataB" v-bind:test="dataC"></h1>
+    <img v-bind:src="dataD">
+    <!--v-bind简写,简写就是把v-bind去除，只保留一个冒号  -->
+    <h1 :tmp="dataA" :id="dataB" :test="dataC"></h1>
+    <img :src="dataD">
+  </div>
+</body>
+
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+  var vm = new Vue({
+    data: function () {
+      return {
+        dataA: 18,
+        dataB: 19,
+        dataC: '嘻嘻',
+        dataD: './three-lifetimes.jpeg'
+      }
+    }
+  })
+  vm.$mount('#app')
+</script>

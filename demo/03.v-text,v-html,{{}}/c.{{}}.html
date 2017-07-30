@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{}}</title>
+</head>
+<body>
+  <h1>{{}}</h1>
+  <pre>
+    {{}} 和 v-text 功能一致，只是使用方式不同罢了
+    v-text 只能写在标签的属性位置
+    {{}} 不能写在标签的属性位置
+  </pre>
+  <hr>
+  <div id="app">
+    {{msg}} <br>
+    {{age}} <br>
+    {{'我是雨荷啊!' + '!!!!!'}} <br>
+    
+    <!-- 这是个小bug，这里不能写直接写包含标签的字符串，否则会被浏览器解析成dom结构的  -->
+    <!-- 如果非要写这个包含标签的字符串的话，请使用v-text，或者把字符串定义到data中  -->
+     <!-- {{ '<p>嘻嘻看不到p标签了</p>' }}  -->
+  </div>
+</body>
+</html>
+<!--1. 引入vue.js文件  -->
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+  // 2. 创建vue实例对象
+  var vm = new Vue({
+    data: function () {
+      return {
+        msg: '<h1>我是中国人，我爱自己的祖国!<h1>',
+        age: 18
+      }
+    }
+  })
+
+  // 3. 不要忘记这一步
+  vm.$mount('#app')
+  </script>

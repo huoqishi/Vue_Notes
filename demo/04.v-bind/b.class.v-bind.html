@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-bind</title>
+  <style>
+    .hello{
+      font-size: 30px;
+    }
+    .active{
+      color: #00f;
+    }
+    .red{
+      background: #f00;
+    }
+    .green{
+      background: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>v-bind</h1>
+  <pre>
+    v-bind的操作的属性如果是class的话，情况就有些不一样了
+  </pre>
+  <div id="app">
+    <!--将 'red' 值追加给 class属性 -->
+    <h3 v-bind:class=" 'red' ">我是中国人，我爱自己的祖国!</h3>
+    <!--注意空格  -->
+    <!--将 'red' + ' active'的值追加给class属性:  'red active'  -->
+    <h3 v-bind:class=" 'red' + ' active'">我是中国人，我爱自己的祖国!(注意空格)</h3> 
+    <!-- 将dataC的值,追加给class, 也就是将'red'追加给class -->
+    <h3 v-bind:class="dataA">我是中国人，我爱自己的祖国!</h3>
+
+    <hr>
+    <!--接下来是高级用法了  -->
+    <!--Vue内部会找到obj对象, 遍历obj, 如果属性的值为true, Vue就会将属性名(注意，这里说的是属性名),追回给class属性  -->
+    <div v-bind:class="obj">我是中国人，我爱自己的祖国</div>
+    <!--或者这样写也可以  -->
+    <div v-bind:class="{red: true, active: true, hello: false}">我是中国人， 我爱自己的祖国</div>
+  </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+  var vm = new Vue({
+    data: function () {
+      return {
+        dataA: 'red',
+        obj: {red: true, active: true, hello: false}
+      }
+    }
+  })
+  vm.$mount('#app')
+</script>

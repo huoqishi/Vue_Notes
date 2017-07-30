@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>利用getter,setter，当数据变化后自动渲染到dom中去</title>
+</head>
+<body>
+  <div id="app">
+      <input type="text" v-model="name">
+      <input type="text" v-model="msg">
+      <p v-text="msg"></p>
+      <h1 v-text="name"></h1>
+      我今年<p>18</p>岁了
+  </div>
+</body>
+</html>
+<script src="./c.getter-setter-data-bind.js"></script>
+<script>
+  var obj = {
+    name: '小明你好吗！',
+    age: 18,
+    msg: '我是中国人，我爱自己的祖国!'
+  }
+  var vm = new DateBind({
+    data: function () {
+      return obj
+    }
+  })
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>通过dom操作来渲染数据</title>
+</head>
+<body>
+  <div id="app">
+     <input type="text">
+     <p></p>
+  </div>
+</body>
+</html>
+<script>
+  var obj = {
+    msg: '你好吗'
+  }
+  var oInput = document.querySelector('input')
+  var oP = document.querySelector('p')
+  oInput.value = obj.msg
+  oP.innerHTML = obj.msg
+</script>
